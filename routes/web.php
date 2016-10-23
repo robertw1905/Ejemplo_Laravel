@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Noticias@mostrar');
+    /*
+     *
+     Route::get('/', function () {
+        return view('welcome');
+    });
+    */
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+// Noticias
+Route::resource('/noticias', 'Noticias');

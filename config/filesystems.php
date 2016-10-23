@@ -62,6 +62,11 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        'imgNoticias' => [
+            'driver' => 'local',
+            'root' => public_path('imgNoticias'),
+        ],
+
     ],
 
 ];

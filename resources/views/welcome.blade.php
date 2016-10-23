@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -73,7 +73,7 @@
                 </div>
             @endif
 
-            <div class="content">
+            <!--<div class="content">
                 <div class="title m-b-md">
                     Laravel
                 </div>
@@ -84,6 +84,31 @@
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>-->
+            <div class="container">
+                <h1>Noticias</h1>
+                <div class="row">
+                    @if(isset($noticias))
+                        @foreach($noticias as $n)
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title" >{{$n->titulo}}</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        @if($n->urlImg != null)
+                                            <img src="imgNoticias/{{ $n->urlImg }}" class="img img-responsive" alt="Responsive image" style="max-width: 80px;">
+                                        @else
+                                            [No tiene imagen]
+                                        @endif
+                                        <p>{{$n->descripcion}}</p>
+                                    </div>
+                                    <div class="panel-footer">Panel footer</div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
