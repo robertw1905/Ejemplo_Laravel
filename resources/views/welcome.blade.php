@@ -88,6 +88,15 @@
             </div>-->
             <div class="container">
                 <h1>Noticias</h1>
+                <div class="row" >
+                    <div class="col-md-10 col-md-offset-1" >
+                        <div class="panel panel-default" >
+                            <div class="panel-body" >
+                                {{ trans('messages.welcome')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     @if(isset($noticias))
                         @foreach($noticias as $n)

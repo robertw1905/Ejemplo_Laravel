@@ -57,7 +57,7 @@ class Noticias extends Controller
 
         $this->validate($request, [
             'titulo' => 'required',
-            'descripcion' => 'required',
+            'descripcion' => 'required'
         ]);
 
         //

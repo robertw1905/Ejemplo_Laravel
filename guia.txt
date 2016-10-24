@@ -1,0 +1,50 @@
+// Crea la carpeta del proyecto
+
+composer create-project laravel/laravel <name proyecto>
+
+// Corre un servidor de desarrollo http://localhost:8000
+
+php artisan serve
+
+// Crea todo para la autentificacion
+php artisan make:auth
+
+// Crear un modelo con el archivo de migracion
+
+php artisan make:model <name model> -m
+
+// Crear las relaciones
+
+// En la tabla que lleva la FK
+
+$table->integer('<name_id>')->unsigned();
+...
+$table->foreign('<name_id>')->references('id')-on('categories');
+
+// Crear las migraciones
+
+php artisan migrate
+
+// Reset de las migraciones
+
+php artisan migrate:reset
+
+// Crear Controller
+
+php artisan make:controller <nameController> --resource
+
+// ver la lista de rutas del sistema
+
+php artisan toute:list
+
+// se puede crear un prefijo a las rutas
+// para dejarla asi:
+// http://localhost/admin/nombre
+//
+// tambien se puede colocar un alias a home se le conocerá como Inicio
+
+Route::group(['prefix' => 'admin'], function (){
+	Route::get('Inicio', ['as' => 'home',
+		'uses' => 'HomeController@index'
+	]);
+});
