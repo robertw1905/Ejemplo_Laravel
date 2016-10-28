@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Noticia;
 
 class HomeController extends Controller
@@ -24,7 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $noticia = Noticia::all();
-        return view('home')->with('noticias', $noticia);
+        //$noticia = Noticia::all();
+        //return view('home')->with('noticias', $noticia);
+
+        //Paginando
+        $noticias = DB::table('noticias')->paginate(2);
+        return view('home', ['noticias' => $noticias]);
     }
 }

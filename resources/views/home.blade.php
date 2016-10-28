@@ -14,6 +14,7 @@
                         @include('layouts.formulario')
                         @include('layouts.tabla')
                     @endif
+                    {{ $noticias->links() }}
                 </div>
             </div>
         </div>

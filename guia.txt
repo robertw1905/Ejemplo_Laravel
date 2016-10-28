@@ -50,8 +50,6 @@ Route::group(['prefix' => 'admin'], function (){
 });
 
 
-
-
 Modelo
 	/**
      * The attributes that are mass assignable.
@@ -71,3 +69,35 @@ Migracion
             $table->string('urlImg');
             $table->timestamps();  // created_at y updated_at
         });
+=======
+// join in laravel
+
+$times=DB::table('timesheets')
+->leftJoin('users', 'timesheets.timesheet_user', '=', 'users.id')
+->leftJoin('projects','projects.project_id','=','timesheets.timesheet_project_id')
+->where('timesheet_user','=',$user)
+
+//para paginar
+	/*php artisan vendor:publish --tag=laravel-pagination*/
+		-- Controller <name>Controller.php
+		$noticias = DB::table('noticias')->paginate(2);
+		return view('home', ['noticias' => $noticias]);
+		-- Vista <name>.blade.php
+		{{ $noticias->links() }}
+
+
+// Crear migracion desde Base de Datos existente
+
+	// ejecutar comandos en consola
+	composer require --dev --no-update "xethron/migrations-generator:dev-l5"
+	composer require --dev --no-update "way/generators:dev-feature/laravel-five-stable"
+	composer config repositories.repo-name git "git@github.com:jamisonvalenta/Laravel-4-Generators.git"
+	composer update
+
+	//agregamos los  services providers en array de providers que podemos encontrar en el archivo config/app.php:
+
+	Way\Generators\GeneratorsServiceProvider::class,
+	Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
+
+	
+php artisan migrate:generate
