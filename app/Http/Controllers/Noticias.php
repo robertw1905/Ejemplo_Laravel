@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Noticia;
+use App\Blog;
 
 use Storage;
 
@@ -165,6 +165,8 @@ class Noticias extends Controller
     {
         //
         Noticia::destroy($id);
+        $noticia = Noticia::find($id);
+        Storage::disk('imgNoticias')->delete($noticia->urlImg);
         return back();
     }
 }

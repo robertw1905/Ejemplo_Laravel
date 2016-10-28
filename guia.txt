@@ -48,3 +48,26 @@ Route::group(['prefix' => 'admin'], function (){
 		'uses' => 'HomeController@index'
 	]);
 });
+
+
+
+
+Modelo
+	/**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $table = 'blog';
+
+    protected $fillable = [
+        'titulo', 'descripcion', 'urlImg',
+    ];
+Migracion
+		Schema::create('blogs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('titulo');
+            $table->string('descripcion');
+            $table->string('urlImg');
+            $table->timestamps();  // created_at y updated_at
+        });

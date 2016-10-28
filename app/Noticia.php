@@ -11,6 +11,8 @@ class Noticia extends Model
      *
      * @var array
      */
+    protected $tabla = 'Noticia';
+
     protected $fillable = [
         'titulo', 'descripcion', 'urlImg',
     ];

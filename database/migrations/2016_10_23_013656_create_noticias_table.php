@@ -18,7 +18,7 @@ class CreateNoticiasTable extends Migration
             $table->string('titulo');
             $table->string('descripcion');
             $table->string('urlImg');
-            $table->timestamps();
+            $table->timestamps(); // created_at y updated_at
         });
     }
 
